@@ -1,0 +1,13 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "projects/workflows/tab" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <%= render "_form_core/render/form",
+                   form: @form, instance: @form_record,
+                   options: {scope: :form_record, url: project_workflow_instances_path(@project, @workflow), local: true} %>
+      </div>
+    </div>
+  </div>
+</div>

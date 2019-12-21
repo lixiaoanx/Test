@@ -1,0 +1,8 @@
+zh-CN:
+  projects:
+    workflows:
+      shared:
+        title: "工作流"
+        tabs:
+          show: "流程图"
+          new: "新建"

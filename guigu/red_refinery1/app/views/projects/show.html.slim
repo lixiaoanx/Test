@@ -1,0 +1,62 @@
+- content_for :action_bar
+  ol
+    li.action_bar-item
+      button.btn.text-primary[type="button" data-toggle="modal" data-target="#new_workflow"]
+        i.fas.fa-plus
+        |  发起审批
+    - if current_member.moderator?
+      li.action_bar-item
+        = link_to edit_tenant_admin_project_path(@project.tenant, @project), class: "btn" do
+          i.fas.fa-cog
+
+.row.justify-content-center
+  .col-lg-12
+    .card.tab-content.r-r.r-instances
+      .card-body
+        h3.page-title
+          = "我发起的审批 "
+          span.badge.badge-pill.badge-secondary = @my_instances.count
+          .float-right
+            = link_to "查看全部审批", project_workflows_path(@project), class: 'btn btn-dark btn-sm'
+        = render_instances_table @my_instances.first(15)
+
+.row.justify-content-center
+  .col-lg-12
+    .card.tab-content.r-r.r-instances
+      .card-body
+        h3.page-title
+          = "待处理的审批 "
+          span.badge.badge-pill.badge-secondary = @pending_tokens.count
+          .float-right
+            = link_to "全部", project_path(@project), class: "btn btn-light btn-sm #{"active" if params[:category_id].blank?}"
+            - @project.workflow_categories.each do |category|
+              = link_to category.title, project_path(@project, category_id: category.id), class: "btn btn-light btn-sm #{"active" if params[:category_id] == category.id.to_s}"
+        = render_instances_table @pending_tokens, hide_category: !!(params[:category_id])
+
+.row.justify-content-center
+  .col-lg-12
+    .card.tab-content.r-r.r-instances
+      .card-body
+        h3.page-title
+          = "待阅读的审批 "
+          span.badge.badge-pill.badge-secondary = @pending_observations.count
+        = render_instances_table @pending_observations.first(15), hide_category: !!(params[:category_id])
+
+#new_workflow.modal.fade[tabindex="-1" role="dialog" aria-labelledby="NewWorkflow" aria-hidden="true" style="display: none;"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        h4.modal-title
+          | 发起流程
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+      .modal-body.text-center
+        .btn-group
+          - @project.workflows.includes(:category).active.for(current_member).group_by(&:category).each do |category, workflows|
+            .dropdown
+              button.btn.btn-secondary.btn-lg.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+                = category ? category.title : "未分类"
+              .dropdown-menu[x-placement="bottom-start"]
+                - workflows.each do |workflow|
+                  = link_to workflow.title, new_project_workflow_instance_path(@project, workflow), class: "dropdown-item"

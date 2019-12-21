@@ -1,0 +1,48 @@
+.container-fluid
+  .jumbotron
+    h1.display-4
+      | 欢迎来到 #{t('layouts.header.brand')}
+    p.lead
+      | 在这里对 #{t('layouts.header.brand')} 进行配置，并查看相关运行数据。
+
+  .row
+    .col-sm-4
+      .card.text-center.w-75
+        /.card-header Redmine 终端数量
+        .card-body
+          h5.card-title
+            = Tenant.all.size
+        .card-footer
+          small.text-muted Redmine 终端数量
+    .col-sm-4
+      .card.text-center.w-75
+        /.card-header 项目数量
+        .card-body
+          h5.card-title
+            = Project.all.size
+        .card-footer
+          small.text-muted  项目数
+    .col-sm-4
+      .card.text-center.w-75
+        /.card-header 事务数量
+        .card-body
+          h5.card-title
+            = User.all.size
+        .card-footer
+          small.text-muted 注册用户数
+    .col-sm-6
+      .card.text-center.w-75
+        /.card-header 事务数量
+        .card-body
+          h5.card-title
+            = Workflow.all.size
+        .card-footer
+          small.text-muted 工作流数量
+    .col-sm-6
+      .card.text-center.w-75
+        /.card-header 事务数量
+        .card-body
+          h5.card-title
+            = WorkflowInstance.all.size
+        .card-footer
+          small.text-muted 发起事务数量

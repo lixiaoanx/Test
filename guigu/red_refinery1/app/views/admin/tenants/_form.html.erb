@@ -1,0 +1,33 @@
+<%= form_with(model: [:admin, tenant], local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :permalink %>
+    <%= f.text_field :permalink, autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :permalink, class: "invalid-feedback" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :name, class: "invalid-feedback" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :redmine_host %>
+    <%= f.text_field :redmine_host, autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :redmine_host, class: "invalid-feedback" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :redmine_secret %>
+    <%= f.text_field :redmine_secret, autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :redmine_secret, class: "invalid-feedback" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :redmine_database_url %>
+    <%= f.text_field :redmine_database_url, autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :redmine_database_url, class: "invalid-feedback" %>
+  </div>
+
+  <%= f.submit((tenant.persisted? ? t("shared.form.submit.update") : t("shared.form.submit.create")), class: "btn btn-block btn-primary") %>
+<% end %>

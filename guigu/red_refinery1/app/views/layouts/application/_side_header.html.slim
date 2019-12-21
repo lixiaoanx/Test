@@ -1,0 +1,28 @@
+- namespace = controller.controller_path.split("/").first
+nav.rr-navbar
+  /- if has_sidebar?
+      button.navbar-toggler.sidebar-toggler.d-lg-none data-toggle="sidebar-show" type="button" 
+      span.navbar-toggler-icon
+  /= link_to root_path, class: "navbar-brand" do
+      = t("layouts.header.brand")
+  = link_to root_path, class: 'brand'
+    i.fas.fa-otter
+    = t("layouts.header.brand")
+  .nav-items.main-nav-content
+    = link_to root_path, class: "nav-item #{'active' if controller_name == 'home' && namespace != 'admin'}"
+      i.fas.fa-tachometer-alt
+      = t("layouts.header.nav.dashboard")
+    = link_to projects_path, class: "nav-item #{'active' if controller_name == 'projects' && namespace != 'admin'}"
+      i.fas.fa-layer-group
+      = t("layouts.header.nav.projects")
+  .nav-items.bottom.dropright
+    - if current_user.admin?
+      = link_to admin_root_path, class: "nav-item #{'active' if namespace == 'admin'}"
+        i.fas.fa-cogs
+        = t("layouts.header.account_menu.admin")
+    a class="nav-item dropdown dropdown-toggle #{'active' if namespace == 'accounts'}" data-toggle="dropdown"
+      i.fas.fa-user-alt
+      = current_user.name
+    .dropdown-menu
+      = link_to t("layouts.header.account_menu.profile"), account_profile_path, class: "dropdown-item"
+      = link_to t("layouts.header.account_menu.sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item"

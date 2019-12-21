@@ -1,0 +1,48 @@
+<div class="sidebar rr">
+  <h2 class="sidebar-title"><%= @project.name %> 设置</h2>
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <%= nav_item controller: 'tenants/admin/projects', html_options: {class: "nav-item"} do %>
+      <%= link_to tenant_admin_project_path(@tenant, @project), class: "nav-link" do %>
+      <i class="nav-icon fas fa-tools"></i>
+      <%= t("layouts.sidebar.tenant_admin_project.home") %>
+      <% end %>
+      <% end %>
+
+      <%= nav_item namespace: 'tenants/admin/projects/workflow_categories', html_options: {class: "nav-item"} do %>
+      <%= link_to tenant_admin_project_workflow_categories_path(@tenant, @project), class: "nav-link" do %>
+      <i class="nav-icon fas fa-tags"></i>
+      <%= t("layouts.sidebar.tenant_admin_project.workflow_categories") %>
+      <% end %>
+      <% end %>
+      <%= nav_item namespace: 'tenants/admin/projects/workflows', html_options: {class: "nav-item"} do %>
+      <%= link_to tenant_admin_project_workflows_path(@tenant, @project), class: "nav-link" do %>
+      <i class="nav-icon fas fa-toolbox"></i>
+      <%= t("layouts.sidebar.tenant_admin_project.workflows") %>
+      <% end %>
+      <% end %>
+
+      <%= nav_item namespace: 'tenants/admin/projects/forms', html_options: {class: "nav-item"} do %>
+      <%= link_to tenant_admin_project_forms_path(@tenant, @project), class: "nav-link" do %>
+      <i class="nav-icon fas fa-file-alt"></i>
+      <%= t("layouts.sidebar.tenant_admin_project.forms") %>
+      <% end %>
+      <% end %>
+
+
+      <%= nav_item controller: 'tenants', html_options: {class: "nav-item no-after"} do %>
+      <%= link_to project_path(@project), class: "nav-link" do %>
+      <i class="nav-icon fas fa-arrow-left"></i>
+      <%= t("layouts.sidebar.tenant_admin_project.back") + ' "' + @project.name + '" '%>
+      <% end %>
+      <% end %>
+      <%= nav_item controller: 'tenants', html_options: {class: "nav-item no-after"} do %>
+      <%= link_to tenant_path(@tenant), class: "nav-link" do %>
+      <i class="nav-icon fas fa-arrow-left"></i>
+      <%= t("layouts.sidebar.tenant_admin_project.back") + ' "' + @tenant.name + '" 设置'%>
+      <% end %>
+      <% end %>
+    </ul>
+  </nav>
+  <button class="sidebar-minimizer" type="button"></button>
+</div>

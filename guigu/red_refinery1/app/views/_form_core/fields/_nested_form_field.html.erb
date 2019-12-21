@@ -1,0 +1,42 @@
+<div class="form-group nested_form_field">
+  <%= f.label field.name, field.label %>
+
+  <%= tag.div id: field.name, class: "form-group collection" do %>
+    <%= f.fields_for field.name do |ff| %>
+      <%= render "_form_core/fields/nested_form", f: ff, field: field, form: field.nested_form, nesting: false %>
+    <% end %>
+
+    <% if field.access_read_and_write? %>
+      <%= link_to_add_association "Add", f, field.name,
+                                  force_non_association_create: true,
+                                  class: "btn btn-link btn-sm",
+                                  partial: "_form_core/fields/nested_form",
+                                  render_options: {
+                                    locals: {field: field, form: field.nested_form, nesting: true}
+                                  } %>
+    <% end %>
+  <% end %>
+  <% if field.hint.present? %>
+    <span class="form-text text-muted">
+      <%= field.hint %>
+    </span>
+  <% end %>
+</div>
+
+<% if field.access_read_and_write? %>
+  <script>
+    document.addEventListener("turbolinks:load", function() {
+      if($('<%= "##{field.name}" %> > .nested_form').length > 0) {
+        $('<%= "##{field.name}" %> .links a.add_fields').hide();
+      }
+
+      $('<%= "##{field.name}" %>')
+        .on('cocoon:before-insert', function() {
+          $('<%= "##{field.name}" %> .links a.add_fields').hide();
+        })
+        .on("cocoon:before-remove", function() {
+          $('<%= "##{field.name}" %> .links a.add_fields').show();
+        });
+    });
+  </script>
+<% end %>

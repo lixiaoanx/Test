@@ -1,0 +1,24 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        trackers:
+          shared:
+            notice:
+              updated: "追踪更新成功"
+              created: "追踪创建成功"
+              deleted: "追踪删除成功"
+          index:
+            title: "项目追踪监听管理"
+            actions:
+              new: "新建项目追踪监听"
+            table:
+              redmine_tracker_name: "Redmine 追踪"
+              created_at: "创建于"
+              actions:
+                edit: "编辑"
+                destroy: "删除"
+          new:
+            title: "新建项目追踪监听"
+          edit:
+            title: "编辑项目追踪监听"

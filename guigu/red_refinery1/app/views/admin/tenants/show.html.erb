@@ -1,0 +1,74 @@
+<%- content_for :action_bar do %>
+  <ol>
+    <li class="action_bar-item">
+      <%= link_to t("shared.actions.back"), admin_tenants_path, class: "btn text-primary" %>
+    </li>
+    <li class="action_bar-item">
+      <%= link_to t("shared.actions.edit"), edit_admin_tenant_path(@tenant), class: "btn text-primary" %>
+    </li>
+  </ol>
+<% end %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <div class="container">
+      <h3 class="page-title">
+        <%= @tenant.class.model_name.human %> #<%= @tenant.id %>
+      </h3>
+
+      <dl class="row">
+        <dt class="col-sm-3">
+          <%= t(".permalink") %>
+        </dt>
+        <dd class="col-sm-9">
+          <%= @tenant.permalink %>
+        </dd>
+
+        <dt class="col-sm-3">
+          <%= t(".name") %>
+        </dt>
+        <dd class="col-sm-9">
+          <%= @tenant.name %>
+        </dd>
+
+        <dt class="col-sm-3">
+          <%= t(".redmine_host") %>
+        </dt>
+        <dd class="col-sm-9">
+          <%= link_to @tenant.redmine_host, @tenant.redmine_host, target: "_blank" %>
+          <% if @valid_host %>
+            <span class="badge badge-success">
+              <%= t(".valid") %>
+            </span>
+          <% end %>
+        </dd>
+
+        <dt class="col-sm-3">
+          <%= t(".redmine_secret") %>
+        </dt>
+        <dd class="col-sm-9">
+          <%= @tenant.redmine_secret %>
+        </dd>
+
+        <dt class="col-sm-3">
+          <%= t(".redmine_database_url") %>
+        </dt>
+        <dd class="col-sm-9">
+          <%= @tenant.redmine_database_url %>
+          <% if @valid_database_url %>
+            <span class="badge badge-success">
+              <%= t(".valid") %>
+            </span>
+          <% end %>
+        </dd>
+
+        <dt class="col-sm-3">
+          <%= t(".created_at") %>
+        </dt>
+        <dd class="col-sm-9">
+          <%= time_tag @tenant.created_at %>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>

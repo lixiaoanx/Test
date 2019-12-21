@@ -1,0 +1,41 @@
+- if Tenant.any?
+  h1.rr-page-title = t("layouts.header.nav.dashboard")
+  .row.justify-content-center
+    .col-lg-12
+      .card.tab-content.r-r.r-instances
+        .card-body
+          h3.page-title
+            = "我发起的事务 "
+            span.badge.badge-pill.badge-secondary = @my_instances.count
+          = render_instances_table @my_instances
+  .row.justify-content-center
+    .col-lg-12
+      .card.tab-content.r-r.r-instances
+        .card-body
+          h3.page-title
+            = "待处理 "
+            span.badge.badge-pill.badge-secondary = @pending_tokens.count
+          = render_instances_table @pending_tokens
+  .row.justify-content-center
+    .col-lg-12
+      .card.tab-content.r-r.r-instances
+        .card-body
+          h3.page-title
+            = "待浏览 "
+            span.badge.badge-pill.badge-secondary = @pending_observations.count
+          = render_instances_table @pending_observations
+- else
+  - if current_user.admin?
+    .alert.alert-danger role="alert"
+      h4.alert-heading 尚未配置任何 Redmine 实例
+      hr
+      p
+        | 您需要先对 Redmine 实例进行配置才可正常使用该平台。
+      p.mb-0
+        = link_to '前往配置 Redmine 实例', admin_tenants_path, class: 'btn btn-danger'
+  - else
+    .alert.alert-warning role="alert"
+      h4.alert-heading 管理员尚未完成初始化配置
+      hr
+      p
+        | 请您等待管理员完成 Redmine 实例配置后继续操作。

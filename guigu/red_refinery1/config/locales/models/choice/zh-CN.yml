@@ -1,0 +1,7 @@
+zh-CN:
+  activerecord:
+    models:
+      choice: "选项"
+    attributes:
+      choice:
+        label: "显示名"

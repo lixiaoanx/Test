@@ -1,0 +1,19 @@
+zh-CN:
+  tenants:
+    admin:
+      dictionaries:
+        shared:
+          title: "数据字典管理"
+          notice:
+            updated: "字典记录更新成功"
+            created: "字典记录创建成功"
+            destroyed: "字典记录已被删除"
+        index:
+          title: "数据字典管理"
+          table:
+            scope: "键"
+            value: "值"
+        new:
+          title: "新建"
+        edit:
+          title: "编辑"

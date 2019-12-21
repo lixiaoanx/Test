@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'projects/workflows/instances'}, t("projects.workflows.instances.shared.tab.payload"), project_workflow_instance_path(@project, @workflow, @instance), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'projects/workflows/instances/tokens'}, t("projects.workflows.instances.shared.tab.tokens"), project_workflow_instance_tokens_path(@project, @workflow, @instance), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'projects/workflows/instances/observations'}, t("projects.workflows.instances.shared.tab.observations"), project_workflow_instance_observations_path(@project, @workflow, @instance), class: "nav-link") %>
+  </li>
+</ul>

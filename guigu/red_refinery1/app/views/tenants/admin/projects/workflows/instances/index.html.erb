@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/workflows/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <table class="table table-borderless">
+          <thead>
+          <tr>
+            <th><%= t(".table.workflow_instance_id") %></th>
+            <th><%= t(".table.workflow_created_at") %></th>
+            <th><%= t(".table.workflow_status") %></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @instances.each do |instance| %>
+            <tr>
+              <td class="align-middle">
+                <%= instance.id %>
+              </td>
+              <td class="align-middle">
+                <%= time_tag instance.created_at %>
+              </td>
+              <td class="align-middle">
+                <%= WorkflowInstance.human_enum_value(:status, instance.status) %>
+              </td>
+              <td class="align-middle">
+                <%= link_to t(".table.actions.show"), tenant_admin_project_workflow_instance_path(@tenant, @project, @workflow, instance), class: "btn btn-primary btm-xs" %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

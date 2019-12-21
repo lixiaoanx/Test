@@ -1,0 +1,33 @@
+.row.justify-content-center
+  .col-lg-12
+    .container
+      h3.page-title
+        = t(".title")
+      - unless @tenants.any?
+        .alert.alert-danger role="alert"
+          h4.alert-heading 请联系系统管理员
+          p
+            | 系统管理员尚未配置可连接的 Redmine 实例，请联系管理员（#{Settings.admin.emails.join(', ')}）完成配置后再尝试绑定 Redmine 身份
+      - else
+        .table-responsive
+          table.table
+            thead
+              tr
+                th
+                  = t(".table.name")
+                th
+                  = t(".table.redmine_host")
+                th
+            tbody
+              - @tenants.each do |tenant|
+                tr
+                  td
+                    = tenant.name
+                  td
+                    = link_to tenant.redmine_host, tenant.redmine_host, target: "_blank"
+                  td
+                    - member = @memberships.find { |m| m.tenant_id == tenant.id }
+                    - if member
+                      = member.role.name
+                    - else
+                      = link_to t(".table.actions.connect"), account_membership_path(tenant.id), method: :patch

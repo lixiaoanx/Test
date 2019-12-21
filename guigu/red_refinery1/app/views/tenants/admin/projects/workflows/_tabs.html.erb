@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/workflows', action: :show}, t("tenants.admin.projects.workflows.shared.tabs.show"), tenant_admin_project_workflow_path(@tenant, @project, @workflow), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/workflows', action: :edit}, t("tenants.admin.projects.workflows.shared.tabs.edit"), edit_tenant_admin_project_workflow_path(@tenant, @project, @workflow), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({namespace: 'tenants/admin/projects/workflows/instances'}, t("tenants.admin.projects.workflows.shared.tabs.instances"), tenant_admin_project_workflow_instances_path(@tenant, @project, @workflow), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({namespace: 'tenants/admin/projects/workflows/transitions'}, t("tenants.admin.projects.workflows.shared.tabs.transitions"), tenant_admin_project_workflow_transitions_path(@tenant, @project, @workflow), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/workflows/loads'}, t("tenants.admin.projects.workflows.shared.tabs.load"), tenant_admin_project_workflow_load_path(@tenant, @project, @workflow), class: "nav-link") %>
+  </li>
+</ul>

@@ -1,0 +1,7 @@
+zh-CN:
+  activerecord:
+    models:
+      project_tracker: "项目追踪监听"
+    attributes:
+      project_tracker:
+        redmine_tracker_id: "Redmine 追踪 Id"

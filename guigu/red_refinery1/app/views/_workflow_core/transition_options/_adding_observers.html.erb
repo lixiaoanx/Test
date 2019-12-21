@@ -1,0 +1,9 @@
+<div class="form-group">
+  <%= f.label :assignee_member_ids %>
+  <%= f.select :assignee_member_ids,
+               options_from_collection_for_select(project.members.all, :id, :name, f.object.assignee_member_ids),
+               {},
+               multiple: true, class: "form-control", class_for_error: "is-invalid"
+  %>
+  <%= f.error_message :assignee_member_ids, class: "invalid-feedback" %>
+</div>

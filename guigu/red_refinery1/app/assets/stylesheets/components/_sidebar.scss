@@ -1,0 +1,93 @@
+body.rr .sidebar {
+  background-color: $secondary_black;
+  color: $white;
+  width: $sidebar-width;
+
+  .sidebar-title {
+    padding: 32px;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 36px;
+  }
+
+  .sidebar-nav {
+    width: 100%;
+
+    .nav {
+      width: 100%;
+    }
+  }
+
+  .nav-item::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    width: 50px;
+    content: "";
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3Cpath fill='%239fabb8' d='M9.148 2.352l-4.148 4.148 4.148 4.148q0.148 0.148 0.148 0.352t-0.148 0.352l-1.297 1.297q-0.148 0.148-0.352 0.148t-0.352-0.148l-5.797-5.797q-0.148-0.148-0.148-0.352t0.148-0.352l5.797-5.797q0.148-0.148 0.352-0.148t0.352 0.148l1.297 1.297q0.148 0.148 0.148 0.352t-0.148 0.352z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12.5px;
+    transform: rotate(-180deg);
+  }
+
+  .nav-item.no-after::after {
+    display: none;
+  }
+
+  .nav-link,
+  .nav-icon,
+  .nav-link:hover,
+  .nav-link:hover .nav-icon {
+    color: $white !important;
+  }
+
+  .nav-link,
+  .sidebar-minimizer {
+
+    &:hover,
+    &:active,
+    &.active {
+      background: $gray !important;
+    }
+  }
+
+  .nav-link.active {
+    box-shadow: inset 4px 0 0 #666;
+  }
+
+  .sidebar-minimizer {
+    border-top: none;
+  }
+}
+
+body.rr.sidebar-minimized {
+  .sidebar-minimizer {
+    background: $gray !important;
+  }
+
+  .nav-item::after {
+    display: none;
+  }
+}
+
+body.rr.sidebar-fixed {
+  background-color: white;
+
+  main form {
+    .form-title {
+      font-size: 16px;
+      font-weight: bolder;
+      padding: 32px 0;
+    }
+  }
+}
+
+body.rr.sidebar-minimized {
+  .sidebar.rr {
+    .sidebar-title {
+      display: none;
+    }
+  }
+}

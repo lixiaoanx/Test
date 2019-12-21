@@ -1,0 +1,69 @@
+<%
+  start_date_field_name_options =
+    options_for_select(
+      @workflow.form.fields
+        .select { |field| field.type_key.in? %i[date_field date_range_field] }
+        .map { |field| [field.label, field.name] },
+      f.object.start_date_field_name)
+%>
+<div class="form-group">
+  <%= f.label :start_date_field_name %>
+  <%= f.select :start_date_field_name, start_date_field_name_options, { class_for_error: "is-invalid", include_blank: true }, class: "form-control" %>
+  <%= f.error_message :start_date_field_name, class: "invalid-feedback" %>
+</div>
+
+<%
+  due_date_field_name_options =
+    options_for_select(
+      @workflow.form.fields
+        .select { |field| field.type_key.in? %i[date_field date_range_field] }
+        .map { |field| [field.label, field.name] },
+      f.object.due_date_field_name)
+%>
+<div class="form-group">
+  <%= f.label :due_date_field_name %>
+  <%= f.select :due_date_field_name, due_date_field_name_options, { class_for_error: "is-invalid", include_blank: true }, class: "form-control" %>
+  <%= f.error_message :due_date_field_name, class: "invalid-feedback" %>
+</div>
+
+<%
+  estimated_hours_field_name_options =
+    options_for_select(
+      @workflow.form.fields
+        .select { |field| field.type_key.in? %i[integer_field decimal_field] }
+        .map { |field| [field.label, field.name] },
+      f.object.estimated_hours_field_name)
+%>
+<div class="form-group">
+  <%= f.label :estimated_hours_field_name %>
+  <%= f.select :estimated_hours_field_name, estimated_hours_field_name_options, { class_for_error: "is-invalid", include_blank: true }, class: "form-control" %>
+  <%= f.error_message :estimated_hours_field_name, class: "invalid-feedback" %>
+</div>
+
+<%
+  done_ratio_field_name_options =
+    options_for_select(
+      @workflow.form.fields
+        .select { |field| field.type_key.in? %i[integer_field] }
+        .map { |field| [field.label, field.name] },
+      f.object.done_ratio_field_name)
+%>
+<div class="form-group">
+  <%= f.label :done_ratio_field_name %>
+  <%= f.select :done_ratio_field_name, done_ratio_field_name_options, { class_for_error: "is-invalid", include_blank: true }, class: "form-control" %>
+  <%= f.error_message :done_ratio_field_name, class: "invalid-feedback" %>
+</div>
+
+<%
+  notes_field_name_options =
+    options_for_select(
+      @workflow.form.fields
+        .select { |field| field.type_key.in? %i[text_field] }
+        .map { |field| [field.label, field.name] },
+      f.object.notes_field_name)
+%>
+<div class="form-group">
+  <%= f.label :notes_field_name %>
+  <%= f.select :notes_field_name, notes_field_name_options, { class_for_error: "is-invalid", include_blank: true }, class: "form-control" %>
+  <%= f.error_message :notes_field_name, class: "invalid-feedback" %>
+</div>

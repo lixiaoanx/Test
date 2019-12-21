@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/forms/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <%= link_to t(".new_field"), new_tenant_admin_project_form_field_path(@tenant, @project, @form), class: "btn btn-primary" %>
+
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th><%= t(".table.title") %></th>
+              <th><%= t(".table.type") %></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @fields.each do |field| %>
+              <tr>
+                <td><%= field.label %></td>
+                <td><%= field.class.model_name.human %></td>
+                <td>
+                  <% unless field.builtin? %>
+                    <% if field.nested_form %>
+                      <%= link_to t(".actions.nested_form"), tenant_admin_project_form_fields_path(@tenant, @project, field.nested_form) %> |
+                    <% end %>
+                    <%= link_to t("shared.actions.edit"), edit_tenant_admin_project_form_field_path(@tenant, @project, @form, field) %> |
+                    <%= link_to t("shared.actions.destroy"), tenant_admin_project_form_field_path(@tenant, @project, @form, field), method: :delete, class: "text-danger", data: { confirm: t("shared.confirmation.destroy") } %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

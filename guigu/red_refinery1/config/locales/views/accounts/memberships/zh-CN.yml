@@ -1,0 +1,10 @@
+zh-CN:
+  accounts:
+    memberships:
+      index:
+        title: "Redmine 身份管理"
+        table:
+          name: "名称"
+          redmine_host: "Redmine 地址"
+          actions:
+            connect: "绑定 Redmine 身份"

@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/forms/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <p>
+          <%= link_to "back", tenant_admin_project_form_entries_path(@tenant, @project, @form), class: "btn btn-primary" %>
+        </p>
+
+        <%= render "_form_core/preview/form", form: @form, instance: @record %>
+      </div>
+    </div>
+  </div>
+</div>

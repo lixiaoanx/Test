@@ -1,0 +1,44 @@
+zh-CN:
+  projects:
+    workflows:
+      index:
+        title: "工作流"
+        new_section:
+          title: "新建流程"
+        pending_section:
+          title: "待处理的审批"
+          table:
+            workflow_instance_id: "ID"
+            workflow_name: "流程"
+            workflow_creator: "发起人"
+            workflow_created_at: "创建时间"
+            current_place: "当前步骤"
+            actions:
+              show: "去审批"
+        created_by_me_section:
+          title: "我发起的审批"
+          table:
+            workflow_instance_id: "ID"
+            workflow_name: "流程"
+            workflow_created_at: "创建时间"
+            workflow_status: "状态"
+            actions:
+              show: "查看"
+        require_me_review_section:
+          title: "传阅给我的审批"
+          table:
+            workflow_instance_id: "ID"
+            workflow_name: "流程"
+            workflow_created_at: "创建时间"
+            workflow_status: "状态"
+            actions:
+              show: "查看"
+        all_viewable_section:
+          title: "其他审批"
+          table:
+            workflow_instance_id: "ID"
+            workflow_name: "流程"
+            workflow_created_at: "创建时间"
+            workflow_status: "状态"
+            actions:
+              show: "查看"

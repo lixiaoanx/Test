@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      member_group: "Member group"
+    attributes:
+      member_group:
+        group: "Name"
+        parent: "Parent"
+

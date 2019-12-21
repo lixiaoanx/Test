@@ -1,0 +1,12 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        forms:
+          fields:
+            validations:
+              shared:
+                notice:
+                  updated: "字段更新成功"
+              edit:
+                title: "验证规则"

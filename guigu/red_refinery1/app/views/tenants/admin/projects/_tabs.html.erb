@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects'}, t("tenants.admin.projects.shared.tabs.edit"), edit_tenant_admin_project_path(tenant, project), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/trackers'}, t("tenants.admin.projects.shared.tabs.trackers"), tenant_admin_project_trackers_path(tenant, project), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/groups'}, t("tenants.admin.projects.shared.tabs.groups"), tenant_admin_project_groups_path(tenant, project), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/members'}, t("tenants.admin.projects.shared.tabs.members"), tenant_admin_project_members_path(tenant, project), class: "nav-link") %>
+  </li>
+</ul>

@@ -1,0 +1,15 @@
+<%= form_with(model: [tenant, :admin, dictionary], scope: :dictionary, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :scope %>
+    <%= f.text_field :scope, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :scope, class: "invalid-feedback" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :value %>
+    <%= f.text_field :value, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :value, class: "invalid-feedback" %>
+  </div>
+
+  <%= f.submit dictionary.persisted? ? t("shared.form.submit.update") : t("shared.form.submit.create"), class: "btn btn-primary" %>
+<% end %>

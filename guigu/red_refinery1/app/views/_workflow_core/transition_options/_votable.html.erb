@@ -1,0 +1,14 @@
+<div class="form-group">
+  <%= f.label :vote_rule, "通过规则" %>
+
+  <div class="form-group">
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :vote_rule, "one_vote_pass", class: "form-check-input", id: "vote_rule_one_vote_pass" %>
+      <%= f.label :vote_rule, "一票通过", class: "form-check-label", for: "vote_rule_one_vote_pass" %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :vote_rule, "one_vote_down", class: "form-check-input", id: "vote_rule_one_vote_down" %>
+      <%= f.label :vote_rule, "一票否决", class: "form-check-label", for: "vote_rule_one_vote_down" %>
+    </div>
+  </div>
+</div>

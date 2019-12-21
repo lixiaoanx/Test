@@ -1,0 +1,73 @@
+
+<%= form_with(model: @user, url: account_profile_path, html: {method: :put}, local: true) do |f| %>
+  <!--div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="container">
+          <div class="col-lg-4">
+            <h4 class="form-title"><%= t('layouts.sidebar.accounts.profile')%></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div-->
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <h5>
+              <%= t(".section.email.title") %>
+            </h5>
+            <p class="text-muted">
+              <%= t(".section.email.description") %>
+            </p>
+          </div>
+          <div class="col-lg-8">
+            <div class="form-group text-left">
+              <%= f.label :email %>
+              <%= f.email_field :email, id: "user_email", autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+              <%= f.error_message :email, class: "invalid-feedback" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <h5>
+              <%= t(".section.full_name.title") %>
+            </h5>
+            <p class="text-muted">
+              <%= t(".section.full_name.description") %>
+            </p>
+          </div>
+          <div class="col-lg-8">
+            <div class="form-group text-left">
+              <%= f.label :full_name %>
+              <%= f.text_field :full_name, id: "user_full_name", autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+              <%= f.error_message :full_name, class: "invalid-feedback" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-4">
+            <%= f.submit t(".submit"), class: "btn btn-block btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

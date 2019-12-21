@@ -1,0 +1,121 @@
+$rr-card-border-radius: 12px;
+.card.tab-content.r-r.r-instances {
+  border: none;
+  border-radius: $rr-card-border-radius;
+
+  .card-body {
+    padding: 0;
+    padding-bottom: 14px;
+  }
+
+  .content-container {
+    padding: 0 18px;
+  }
+
+  .page-title {
+    display: block;
+    padding: 15px 18px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1f1f1f;
+    line-height: 20px;
+  }
+
+  .alert {
+    margin: 0 18px ;
+  }
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  table {
+    width: 100%;
+    thead {
+      height: 24px;
+      font-size: 14px;
+      line-height: 20px;
+      background-color: #f0f0f0;
+      th {
+        box-sizing: border-box;
+        height: 100%;
+        padding: 5px 18px;
+        color: #1f1f1f;
+      }
+    }
+    tbody {
+      padding: 18px;
+      tr {
+        border-radius: 6px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+      }
+      td {
+        font-size: 14px;
+        line-height: 24px;
+        a {
+          text-decoration: none;
+          color: #1f1f1f;
+          &:hover, &:active, &:visited {
+            text-decoration: none;
+            color: #1f1f1f;
+          }
+        }
+        &.t-lg {
+          font-size: 16px;
+        }
+      }
+    }
+    tr {
+      box-sizing: border-box;
+      height: 100%;
+    }
+  }
+
+  .project-card {
+    min-height: 60px;
+    padding-left: 13px;
+    padding-right: 13px;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    &:hover, &:active {
+      .project-info {
+        background-color: darken(#f0f0f0, 5%);
+      }
+    }
+    .project-info {
+      border-radius: $rr-card-border-radius / 2;
+      background-color: #f0f0f0;
+      transition: background-color .3s;
+      height: 100%;
+      padding: 8px 14px;
+      .project-name {
+        width: 100%;
+        font-size: 16px;
+        line-height: 24px;
+        min-height: 54px;
+        color: #1f1f1f;
+      }
+      .data-block {
+        text-align: center;
+        color: #1f1f1f;
+        font-size: 12px;
+        font-weight: 200;
+        opacity: 0.8;
+        .number {
+          display: block;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .no-data {
+    padding: 12px 18px;
+    font-size: 16px;
+    color: #aaa;
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,22 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        forms:
+          fields:
+            choices:
+              shared:
+                notice:
+                  updated: "选项更新成功"
+                  created: "选项创建成功"
+                  destroyed: "选项已被删除"
+                  forbidden: "该选项不可编辑"
+              index:
+                title: "选项管理"
+                new: "新建选项"
+                table:
+                  label: "显示名"
+              new:
+                title: "新建选项"
+              edit:
+                title: "编辑选项"

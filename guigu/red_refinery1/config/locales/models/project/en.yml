@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      project: "Project"
+    attributes:
+      project:
+        name: "Name"
+        redmine_project_id: "Redmine project id"

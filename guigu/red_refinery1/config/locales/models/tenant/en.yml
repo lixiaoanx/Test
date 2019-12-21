@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      tenant: "Tenant"
+    attributes:
+      tenant:
+        permalink: "Permalink"
+        name: "Name"
+        redmine_host: "Redmine host"
+        redmine_secret: "Redmine secret"
+        redmine_database_url: "Redmine database URL"

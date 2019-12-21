@@ -1,0 +1,19 @@
+.sidebar.rr
+  h2.sidebar-title
+    | 管理 #{@tenant.name}
+  nav.sidebar-nav
+    ul.nav
+      = nav_item controller: 'tenants/home', html_options: {class: "nav-item"}
+        = link_to tenant_path(@tenant), class: "nav-link"
+          i.nav-icon.fas.fa-chart-line
+          = t("layouts.sidebar.tenant.home")
+      - if current_member.moderator?
+        = nav_item namespace: 'tenants/admin/projects', html_options: {class: "nav-item"}
+          = link_to tenant_admin_projects_path(@tenant), class: "nav-link"
+            i.nav-icon.fas.fa-project-diagram
+            = t("layouts.sidebar.tenant.admin_projects")
+        = nav_item namespace: 'tenants/admin/dictionaries', html_options: {class: "nav-item"}
+          = link_to tenant_admin_dictionaries_path(@tenant), class: "nav-link"
+            i.nav-icon.fas.fa-database
+            = t("layouts.sidebar.tenant.admin_dictionaries")
+  button.sidebar-minimizer type="button"

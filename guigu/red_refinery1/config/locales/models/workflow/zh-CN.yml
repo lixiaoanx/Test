@@ -1,0 +1,24 @@
+zh-CN:
+  activerecord:
+    models:
+      workflow: "工作流"
+    attributes:
+      workflow:
+        title: "名称"
+        description: "描述"
+        form: "关联表单"
+        form_id: "关联表单 ID"
+        category_id: "分类"
+        category: "分类"
+        accessibility: "发起权限"
+        accessibilities:
+          public: "所有人都可发起"
+          whitelist: "白名单"
+        accessible_group_ids: "可发起流程的组名单"
+        accessible_member_ids: "可发起流程的成员名单"
+        visibility: "审批可见性"
+        visibilities:
+          public: "公开可见"
+          whitelist: "白名单"
+        visible_group_ids: "可见审批的组名单"
+        visible_member_ids: "可见审批的成员名单"

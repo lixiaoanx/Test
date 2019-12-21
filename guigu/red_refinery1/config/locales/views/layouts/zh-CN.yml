@@ -1,0 +1,39 @@
+zh-CN:
+  layouts:
+    header:
+      brand: "Red Refinery"
+      nav:
+        dashboard: "仪表盘"
+        projects: "我的项目"
+      account_menu:
+        admin: "后台管理"
+        profile: "个人设置"
+        sign_out: "登出"
+    footer:
+      copyright: "© 2019 Jasl, powered by CybrosCore"
+    sidebar:
+      application:
+        home: "首页"
+      accounts:
+        profile: "个人信息"
+        password: "修改密码"
+        memberships: "Redmine 身份管理"
+      admin:
+        home: "系统状态"
+        users: "用户管理"
+        tenants: "Redmine 实例管理"
+      tenant:
+        home: "状态总览"
+        workflows: "工作流"
+        admin: "管理"
+        admin_projects: "项目管理"
+        admin_dictionaries: "数据字典"
+      project:
+        home: "总览"
+        workflows: "工作流"
+      tenant_admin_project:
+        back: "返回"
+        home: "基本设置"
+        forms: "表单管理"
+        workflows: "工作流"
+        workflow_categories: "工作流分类"

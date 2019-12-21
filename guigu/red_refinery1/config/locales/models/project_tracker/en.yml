@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      project_tracker: "Project tracker"
+    attributes:
+      project_tracker:
+        redmine_tracker_id: "Redmine tracker id"

@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'projects/workflows', action: :show}, t("projects.workflows.shared.tabs.show"), project_workflow_path(@project, @workflow), class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'projects/workflows/instances'}, t("projects.workflows.shared.tabs.new"), new_project_workflow_instance_path(@project, @workflow), class: "nav-link") %>
+  </li>
+</ul>

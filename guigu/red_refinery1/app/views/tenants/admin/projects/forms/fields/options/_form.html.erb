@@ -1,0 +1,5 @@
+<%= form_with(model: options, scope: :options, url: tenant_admin_project_form_field_options_path(tenant, project, form, field), method: :patch, local: true) do |f| %>
+  <%= render "_form_core/field_options/#{field.type_key}", f: f, options: options %>
+
+  <%= f.submit t("shared.form.submit.update"), class: "btn btn-block btn-primary" %>
+<% end %>

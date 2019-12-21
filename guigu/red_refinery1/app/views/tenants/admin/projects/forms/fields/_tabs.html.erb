@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/forms/fields'}, t("tenants.admin.projects.forms.fields.shared.tabs.edit"), edit_tenant_admin_project_form_field_path(@tenant, @project, @form, @field), class: "nav-link") %>
+  </li>
+  <% if @field.can_act_as_evaluatable? %>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms/fields/scripts'}, t("tenants.admin.projects.forms.fields.shared.tabs.scripts"), edit_tenant_admin_project_form_field_scripts_path(@tenant, @project, @form, @field), class: "nav-link") %>
+    </li>
+  <% end %>
+  <% if @field.attached_choices? %>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms/fields/choices'}, t("tenants.admin.projects.forms.fields.shared.tabs.choices"), tenant_admin_project_form_field_choices_path(@tenant, @project, @form, @field), class: "nav-link") %>
+    </li>
+  <% end %>
+  <% if @field.options_configurable? %>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms/fields/options'}, t("tenants.admin.projects.forms.fields.shared.tabs.options"), edit_tenant_admin_project_form_field_options_path(@tenant, @project, @form, @field), class: "nav-link") %>
+    </li>
+  <% end %>
+  <% if @field.validations_configurable? %>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms/fields/validations'}, t("tenants.admin.projects.forms.fields.shared.tabs.validations"), edit_tenant_admin_project_form_field_validations_path(@tenant, @project, @form, @field), class: "nav-link") %>
+    </li>
+  <% end %>
+  <% if @field.attached_data_source? %>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms/fields/data_source_options'}, t("tenants.admin.projects.forms.fields.shared.tabs.data_source_options"), edit_tenant_admin_project_form_field_data_source_options_path(@tenant, @project, @form, @field), class: "nav-link") %>
+    </li>
+  <% end %>
+</ul>

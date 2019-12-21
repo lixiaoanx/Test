@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      workflow_instance: "审批"
+    attributes:
+      workflow_instance:
+        statuses:
+          processing: "进行中"
+          completed: "已完成"
+          failed: "失败"
+          unexpected: "发生未知错误"
+          terminated: "已关闭"

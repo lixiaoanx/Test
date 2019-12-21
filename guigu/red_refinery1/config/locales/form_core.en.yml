@@ -1,0 +1,68 @@
+en:
+  activerecord:
+    models:
+      fields/boolean_field: Boolean field
+      fields/text_field: Text field
+      fields/decimal_field: Decimal field
+      fields/integer_field: Integer field
+      fields/date_field: Date field
+      fields/datetime_field: Datetime field
+      fields/attachment_field: Attachment field
+      fields/multiple_attachment_field: Multiple attachment field
+      fields/choice_field: Choice field
+      fields/multiple_choice_field: Multiple choice field
+      fields/select_field: Select field
+      fields/multiple_select_field: Multiple select field
+      fields/resource_select_field: Resource select field
+      fields/multiple_resource_select_field: Multiple resource select field
+      fields/nested_form_field: Nested form field
+      fields/multiple_nested_form_field: Multiple nested form field
+      fields/date_range_field: Date range field
+      fields/datetime_range_field: Datetime range field
+    attributes:
+      form:
+        name: Name
+        description: Description
+        type: Type
+      field:
+        name: Name
+        label: Label
+        hint: Hint
+        type: Type
+        accessibilities:
+          hidden: Hidden
+          readonly: Read-only
+          read_and_write: Normal
+  duck_record:
+    attributes:
+      field_options:
+        presence: Required
+        acceptance: Acceptance
+        confirmation: Confirmation
+        exclusion: Exclusion
+        format: Format
+        inclusion: Inclusion
+        length: Length
+        numericality: Numericality
+        message: Message
+        with: Regexp
+        in: In
+        minimum: Minimum
+        maximum: Maximum
+        is: Equal
+        lower_bound_checks:
+          disabled: 'Off'
+          greater_than: '>'
+          greater_than_or_equal_to: '>='
+        upper_bound_checks:
+          disabled: 'Off'
+          less_than: '<'
+          less_than_or_equal_to: '<='
+        minimum_gap_checks:
+          unrestricted: 'unrestricted'
+          greater_than: '>'
+          greater_than_or_equal_to: '>='
+        maximum_gap_checks:
+          unrestricted: 'unrestricted'
+          less_than: '<'
+          less_than_or_equal_to: '<='

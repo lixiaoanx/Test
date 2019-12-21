@@ -1,0 +1,13 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/forms/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <%= render "_form_core/render/form",
+                   form: @form, instance: @instance,
+                   options: {scope: :preview, url: tenant_admin_project_form_preview_path(@tenant, @project, @form), local: true} %>
+      </div>
+    </div>
+  </div>
+</div>

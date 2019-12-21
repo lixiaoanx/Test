@@ -1,0 +1,38 @@
+<div class="form-group">
+  <%= f.label :assign_to %>
+  <div class="form-group">
+    <% options.class.assign_tos.each do |k, _| %>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :assign_to, k, class: "form-check-input", id: "assign_to_#{k}" %>
+        <%= f.label :assign_to, options.class.human_enum_value(:assign_to, k), class: "form-check-label", for: "assign_to_#{k}" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :assignee_member_ids %>
+  <%= f.select :assignee_member_ids,
+               options_from_collection_for_select(project.members.all, :id, :name, f.object.assignee_member_ids),
+               {},
+               multiple: true, class: "form-control", class_for_error: "is-invalid"
+  %>
+  <%= f.error_message :assignee_member_ids, class: "invalid-feedback" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :assignee_group_ids %>
+  <%= f.select :assignee_group_ids,
+               options_from_collection_for_select(project.groups.all, :id, :name, f.object.assignee_group_ids),
+               {},
+               multiple: true, class: "form-control", class_for_error: "is-invalid"
+  %>
+  <%= f.error_message :assignee_group_ids, class: "invalid-feedback" %>
+</div>
+
+<div class="form-group">
+  <div class="form-check">
+    <%= f.check_box :expand_group, class: "form-check-input" %>
+    <%= f.label :expand_group, class: "form-check-label" %>
+  </div>
+</div>

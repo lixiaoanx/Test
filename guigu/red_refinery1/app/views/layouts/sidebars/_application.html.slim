@@ -1,0 +1,12 @@
+.sidebar
+  .sidebar-header
+    = link_to root_path, class: "nav-link" do
+      i.fas.fa-home
+      = t("layouts.sidebar.application.header")
+  nav.sidebar-nav
+    ul.nav
+      = nav_item path: 'home#index', html_options: {class: "nav-item"} do
+        = link_to root_path, class: "nav-link" do
+          i.fas.fa-tachometer-alt
+          = t("layouts.sidebar.application.home")
+  button.sidebar-minimizer type="button" 

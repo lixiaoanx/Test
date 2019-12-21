@@ -1,0 +1,74 @@
+zh-CN:
+  activerecord:
+    models:
+      fields/boolean_field: 布尔字段
+      fields/text_field: 文本字段
+      fields/decimal_field: 数字字段
+      fields/integer_field: 整数字段
+      fields/date_field: 日期字段
+      fields/datetime_field: 日期时间字段
+      fields/attachment_field: 附件字段
+      fields/multiple_attachment_field: 多附件字段
+      fields/choice_field: 单选字段
+      fields/multiple_choice_field: 多选字段
+      fields/select_field: 文本选择字段
+      fields/multiple_select_field: 多项文本选择字段
+      fields/resource_select_field: 资源选择字段
+      fields/multiple_resource_select_field: 多项资源选择字段
+      fields/resource_field: 资源字段
+      fields/multiple_resource_field: 多项资源字段
+      fields/nested_form_field: 嵌套表单字段
+      fields/multiple_nested_form_field: 多项嵌套表单字段
+      fields/integer_range_field: 整数区间字段
+      fields/decimal_range_field: 数字区间字段
+      fields/date_range_field: 日期区间字段
+      fields/datetime_range_field: 日期时间区间字段
+    attributes:
+      form:
+        name: 标识
+        title: 标题
+        description: 描述
+        type: 类型
+      field:
+        name: 标识
+        label: 显示名称
+        hint: 提示信息
+        type: 类型
+        accessibility: 可访问性
+        accessibilities:
+          hidden: 隐藏
+          readonly: 只读
+          read_and_write: 可读写
+  active_entity:
+    attributes:
+      field_options:
+        presence: 必填
+        acceptance: 必须勾选
+        confirmation: 确认
+        exclusion: 排除
+        format: 格式
+        inclusion: 包含
+        length: 长度
+        numericality: 数字规则
+        message: 错误提示信息
+        with: 正则表达式
+        in: 范围内
+        minimum: 最小值
+        maximum: 最大值
+        is: 等于
+        lower_bound_checks:
+          disabled: 'Off'
+          greater_than: '>'
+          greater_than_or_equal_to: '>='
+        upper_bound_checks:
+          disabled: 'Off'
+          less_than: '<'
+          less_than_or_equal_to: '<='
+        minimum_gap_checks:
+          unrestricted: '不限'
+          greater_than: '>'
+          greater_than_or_equal_to: '>='
+        maximum_gap_checks:
+          unrestricted: '不限'
+          less_than: '<'
+          less_than_or_equal_to: '<='

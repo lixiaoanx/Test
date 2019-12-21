@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/tabs", tenant: @tenant, project: @project %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <p>
+          <%= link_to t(".actions.new"), new_tenant_admin_project_group_path(@tenant, @project), class: "btn btn-primary" %>
+        </p>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th><%= t(".table.name") %></th>
+              <th><%= t(".table.parent_name") %></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @groups.each do |group| %>
+              <tr>
+                <td><%= group.full_name %></td>
+                <td><%= group.parent&.name %></td>
+                <td>
+                  <% unless group.builtin? %>
+                    <%= link_to t(".table.actions.edit"), edit_tenant_admin_project_group_path(@tenant, @project, group) %> |
+                    <%= link_to t(".table.actions.destroy"), tenant_admin_project_group_path(@tenant, @project, group), method: :delete, confirm: t("shared.confirmation.destroy") %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.container-fluid
+  .jumbotron
+    h1.display-4 = @tenant.name
+    p.lead = @tenant.permalink
+    hr.my-4
+    = link_to '前往 Redmine', @tenant.redmine_host, class: 'btn btn-primary btn-lg'
+
+  .row
+    .col-sm-4
+      .card.text-center.w-75
+        .card-header 用户数量
+        .card-body
+          h5.card-title
+            | #{Member.where(tenant: @tenant).size} / #{@tenant.connect_with_redmine { Redmine::User.all.size }}
+        .card-footer
+          small.text-muted 已绑定用户数 / Redmine 用户数
+    .col-sm-4
+      .card.text-center.w-75
+        .card-header 项目数量
+        .card-body
+          h5.card-title
+            | #{Project.where(tenant: @tenant).size} / #{@tenant.connect_with_redmine { Redmine::Project.all.size } }
+        .card-footer
+          small.text-muted  项目数 / Redmine 项目数
+    .col-sm-4
+      .card.text-center.w-75
+        .card-header 事务数量
+        .card-body
+          h5.card-title
+            | #{@tenant.connect_with_redmine { Redmine::Issue.all.size}}
+        .card-footer
+          small.text-muted Redmine 事务数

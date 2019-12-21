@@ -1,0 +1,19 @@
+zh-CN:
+  activerecord:
+    models:
+      transition: "流转"
+      transitions/start: "流程开始"
+      transitions/end: "流程结束"
+      transitions/exclusive_choice: "排他性分支选择"
+      transitions/parallel_split: "并发分裂"
+      transitions/synchronization: "同步合并"
+      transitions/variants/adding_observers: "添加传阅人"
+      transitions/variants/assigning_assignees: "分配审批人"
+      transitions/variants/choice: "人工分支选择"
+      transitions/variants/decision: "投票"
+      transitions/variants/sync_to_redmine: "同步到 Redmine"
+      transitions/variants/user_task: "填表或查看表单"
+    attributes:
+      transition:
+        title: "标题"
+        type: "类型"

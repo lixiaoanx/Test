@@ -1,0 +1,13 @@
+<%- add_to_breadcrumbs @field.label %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <%= render 'form', tenant: @tenant, project: @project, form: @form, field: @field %>
+      </div>
+    </div>
+  </div>
+</div>

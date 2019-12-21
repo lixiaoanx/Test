@@ -1,0 +1,8 @@
+zh-CN:
+  activerecord:
+    models:
+      dictionary: "数据字典"
+    attributes:
+      dictionary:
+        scope: "键"
+        value: "值"

@@ -1,0 +1,176 @@
+.row
+  .col-lg-8
+    .container
+      .card.tab-content.r-r.r-instances
+        .card-body
+          h3.page-title
+            = t(".title")
+          .content-container
+            - form = @form
+            - instance = @form_record
+            = form_with(model: instance, scope: :form_record, url: project_workflow_instance_token_fire_path(@project, @workflow, @instance, @token), local: true) do |f|
+              - form.fields.each do |field|
+                - field = present(field, target: instance)
+                - next if field.access_hidden?
+                = render "_form_core/fields/#{field.type_key}", f: f, field: field
+              - if @token.place.output_transition.is_a? Transitions::Variants::Decision
+                hr
+                .form-group
+                  = f.label :_decision, "处理意见"
+                  .form-group
+                    .form-check.form-check-inline
+                      = f.radio_button :_decision, "pass", class: "form-check-input", id: "action_pass", required:  @token.processing?, disabled: !@token.processing?
+                      = f.label :_decision, "同意", class: "form-check-label", for: "action_pass"
+                    .form-check.form-check-inline
+                      = f.radio_button :_decision, "veto", class: "form-check-input", id: "action_veto", required:  @token.processing?, disabled: !@token.processing?
+                      = f.label :_decision, "驳回", class: "form-check-label", for: "action_veto"
+                  .form-group
+                    = f.label :_comment, "备注"
+                    = f.text_field :_comment, class: "form-control", class_for_error: "is-invalid", disabled: !@token.processing?
+                    = f.error_message :_comment, class: "invalid-feedback"
+              - elsif @token.place.output_transition.is_a? Transitions::Variants::Choice
+                hr
+                .form-group
+                  = f.label :_action, "处理意见"
+                  .form-group
+                    - actions = @token.place.output_transition.options.actions
+                    - actions.each_with_index do |action, i|
+                      .form-check.form-check-inline
+                        = f.radio_button :_action, action.value, class: "form-check-input", id: "action_#{i}", required: @token.processing?, disabled: !@token.processing?
+                        = f.label :_action, action.text, class: "form-check-label", for: "action_#{i}"
+                .form-group
+                  = f.label :_comment, "备注"
+                  = f.text_field :_comment, class: "form-control", class_for_error: "is-invalid", disabled: !@token.processing?
+                  = f.error_message :_comment, class: "invalid-feedback"
+
+              - if @token.processing?
+                hr
+                = f.submit t("shared.form.submit.submit"), class: "btn btn-block btn-primary"
+
+      - observations = @instance.observations.includes(:observable, :granted_by)
+      - if observations.any?
+        .card.tab-content.r-r.r-instances
+          .card-body
+            h3.page-title 传阅记录
+            .content-container
+              - observations.each do |observation|
+                .row.mb-2.comment-info
+                  .col-sm-9
+                    = observation.observable&.name
+                    .comment
+                      span.info 意见
+                      = observation.comment
+                  .col-sm-1
+                    - if observation.read
+                      i.fas.fa-check
+                      | 已读
+                    - else
+                      | 未读
+                  .col-sm-2
+                    = time_tag observation.updated_at
+
+  // 侧边栏
+  .col-lg-4
+    .container
+      .card.tab-content.r-r.r-instances
+        .card-body
+          h3.page-title 审批状态
+          .content-container
+            - if !@token.processing?
+              .alert.alert-info.mb-3
+                | 您当前正在浏览该审批
+                b 过去的状态
+                | ，该步骤已于 #{time_tag @token.updated_at} 完成审批。
+            .row.mb-2
+              .col-sm-3
+                b 审核类型
+              .col-sm-9 = @instance.workflow.title
+            .row.mb-2
+              .col-sm-3
+                b 当前状态
+              - badge_color = case @instance.status
+              -               when 'processing' then 'info'
+              -               when 'completed' then 'success'
+              -               when 'failed', 'unexpected' then 'danger'
+              -               when 'terminated' then 'dark'
+              .col-sm-9
+                span.badge.badge-pill class="badge-#{badge_color}"
+                  = WorkflowInstance.human_enum_value(:status, @instance.status)
+            .row.mb-2
+              .col-sm-3
+                b 发起人
+              .col-sm-9 = @instance.creator.name
+            .row.mb-2
+              .col-sm-3
+                b 发起时间
+              .col-sm-9 = time_tag @instance.created_at
+
+      // 可执行操作于此
+      - if @instance.processing? && @instance.creator == current_member
+        .card.tab-content.r-r.r-instances
+          .card-body
+            h3.page-title 审批管理
+            .content-container
+              = link_to "关闭审批", project_workflow_instance_path(@project, @workflow, @instance), class: "btn btn-danger btn-block", method: :delete
+      - if @token.processing?
+        .card.tab-content.r-r.r-instances
+          .card-body
+            h3.page-title 其他操作
+            .content-container
+              = form_with(model: @token, scope: :token, url: project_workflow_instance_token_forward_path(@project, @workflow, @instance, @token), local: true, class: "form-inline") do |f|
+                .form-group.row
+                  = f.label :forwardable_id, "转发", class: 'col-sm-3 col-form-label mb-2'
+
+                  = f.select :forwardable_id,                                         \
+                    options_from_collection_for_select(@project.members, :id, :name), \
+                    {},                                                               \
+                    class: "form-control mb-2 mr-sm-3 col-sm-6"
+                  = f.submit t("shared.form.submit.submit"), class: "btn btn-primary mb-2"
+              = form_with(model: @token, scope: :token, url: project_workflow_instance_token_endorse_path(@project, @workflow, @instance, @token), local: true, class: "form-inline") do |f|
+                .form-group.row
+                  = f.label :endorsing_member_id, "加签", class: 'col-sm-3 col-form-label mb-2'
+
+                  = f.select :endorsing_member_id,                                    \
+                    options_from_collection_for_select(@project.members, :id, :name), \
+                    {},                                                               \
+                    class: "form-control mb-2 mr-sm-3 col-sm-6"
+                  = f.submit t("shared.form.submit.submit"), class: "btn btn-primary mb-2"
+              = form_with(model: @token, scope: :token, url: project_workflow_instance_token_adding_observation_path(@project, @workflow, @instance, @token), local: true, class: "form-inline") do |f|
+                .form-group.row
+                  = f.label :inviting_member_ids, "传阅", class: 'col-sm-3 col-form-label mb-2'
+
+                  = f.select :inviting_member_ids,                                    \
+                    options_from_collection_for_select(@project.members, :id, :name), \
+                    {},                                                               \
+                    multiple: true, class: "form-control mb-2 mr-sm-3 col-sm-6"
+                  = f.submit t("shared.form.submit.submit"), class: "btn btn-primary mb-2"
+
+      .card.tab-content.r-r.r-instances
+        .card-body
+          h3.page-title 审批历程
+          .content-container
+            .timeline
+              - @tokens.each do |token|
+                - next if token.hidden?
+                .timeline-item
+                  .meta-data
+                    span.progress-status
+                      - if token.processing?
+                        i.fas.fa-hourglass
+                      - elsif token.completed?
+                        i.fas.fa-check
+                      - else
+                        i.fas.fa-times
+                      - if token.forwardable
+                        del= token.forwardable&.name
+                    span.progress-time
+                      = time_tag token.updated_at
+
+                  .main-data
+                    span.progress-user
+                      = token.processable&.name || token.assignable.name
+                    span.main-info
+                      = token.title
+                    - if token.payload.comment.present?
+                      span.secondary-info.text-muted
+                        = token.payload.comment

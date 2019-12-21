@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tab" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <iframe id="iframe-visualize"
+                srcdoc="<%= Graphviz::output(@workflow.to_graph, format: "svg") %>"
+                width="100%"
+                onload="this.height = getElementById('iframe-visualize').contentDocument.body.scrollHeight;">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>

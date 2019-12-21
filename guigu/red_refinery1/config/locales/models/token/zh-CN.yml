@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      token: "任务"
+    attributes:
+      token:
+        statuses:
+          processing: "待处理"
+          completed: "已处理"
+          failed: "失败"
+          unexpected: "发生未知错误"
+          terminated: "已关闭"

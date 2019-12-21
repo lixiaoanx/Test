@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      dictionary: "Dictionary"
+    attributes:
+      dictionary:
+        scope: "Scope"
+        value: "Value"
+

@@ -1,0 +1,17 @@
+<% @workflow.form.fields.each do |field| %>
+  <% field_override = options.field_overrides.find { |r| r.name == field.name } || options.field_overrides.build(name: field.name, accessibility: field.accessibility) %>
+  <%= f.fields_for :field_overrides, field_override do |ff| %>
+    <%= ff.hidden_field :name %>
+    <div class="form-group">
+      <%= label_tag field.name, field.label %>
+      <div class="form-group">
+        <% Field.accessibilities.each do |k, _| %>
+          <div class="form-check form-check-inline">
+            <%= ff.radio_button :accessibility, k, class: "form-check-input", id: "field_accessibility_#{k}" %>
+            <%= ff.label :accessibility, Field.human_enum_value(:accessibility, k), class: "form-check-label", for: "field_accessibility_#{k}" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,7 @@
+zh-CN:
+  activerecord:
+    models:
+      member: "成员"
+    attributes:
+      member:
+        groups: "所在组"

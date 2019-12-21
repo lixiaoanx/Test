@@ -1,0 +1,63 @@
+<%- content_for :action_bar do %>
+  <ol>
+    <% if @instance.processing? %>
+      <li class="action_bar-item">
+        <%= link_to "关闭", tenant_admin_project_workflow_instance_path(@tenant, @project, @workflow, @instance), class: "btn text-danger", method: :delete %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/workflows/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <p>
+          <%= link_to "返回", tenant_admin_project_workflow_instances_path(@tenant, @project, @workflow), class: "btn btn-primary" %>
+        </p>
+
+        <%= render "_form_core/preview/form", form: @form, instance: @form_record %>
+
+        <table class="table is-fullwidth">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>状态</th>
+            <th>当前步骤</th>
+            <th>指派给</th>
+            <th>处理人</th>
+            <th>创建时间</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tfoot>
+          <tr>
+            <th colspan="7">
+              状态: <%= WorkflowInstance.human_enum_value :status, @instance.status %>
+            </th>
+          </tr>
+          </tfoot>
+          <% @tokens.each do |token| %>
+            <tr>
+              <td><%= token.id %></td>
+              <td><%= Token.human_enum_value :status, token.status %></td>
+              <td><%= token.title %></td>
+              <td><%= token.assignable&.name %></td>
+              <td><%= token.processable&.name || token.assignable.name %></td>
+              <td><%= time_tag token.updated_at %></td>
+              <td>
+                <% if !token.place.internal? && token.place&.output_transition %>
+                  <%= link_to "查看", tenant_admin_project_workflow_instance_token_path(@tenant, @project, @workflow, @instance, token) %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

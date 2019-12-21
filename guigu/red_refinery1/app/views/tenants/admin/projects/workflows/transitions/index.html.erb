@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/workflows/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table is-fullwidth">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @transitions.each do |transition| %>
+              <tr>
+                <td><%= transition.id %></td>
+                <td><%= transition.title %></td>
+                <td><%= transition.class.model_name.human %></td>
+                <td>
+                  <% if transition.options_configurable? %>
+                    <%= link_to "Options", edit_tenant_admin_project_workflow_transition_options_path(@tenant, @project, @workflow, transition) %> |
+                  <% end %>
+                  <%= link_to "Edit", edit_tenant_admin_project_workflow_transition_path(@tenant, @project, @workflow, transition) %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+zh-CN:
+  active_entity:
+    attributes:
+      transitions/options/adding_observers:
+        assignee_member_ids: "传阅给成员列表"
+        assignee_group_ids: "传阅给组列表"
+      transitions/options/assigning_assignees:
+        assign_to: "指派给"
+        assignee_member_ids: "指派成员列表"
+        assignee_group_ids: "指派给组列表"
+        expand_group: "直接指派给组的每个成员"
+        assign_tos:
+          creator: "发起人"
+          specific: "指定人或组"
+          inherited: "继承当前的审批人"
+      transitions/options/choice:
+        actions: "动作"
+      transitions/options/choice/action:
+        text: "显示文本"
+        value: "取值"
+        place_id: "跳转到"
+      transitions/options/decision:
+        pass_place_id: "通过则跳转到"
+        veto_place_id: "驳回则跳转到"
+        vote_rule: "投票规则"
+        vote_rules:
+          one_vote_pass: "一票通过"
+          one_vote_down: "全票通过（一票否决）"
+      transitions/options/exclusive_choice:
+        default_next_place_id: "如果条件都不满足则跳转到"
+        conditions: "条件分支"
+      transitions/options/exclusive_choice/condition:
+        condition_expression: "条件表达式"
+        place_id: "匹配则跳转到"
+      transitions/options/sync_to_redmine:
+        start_date_field_name: "开始日期字段"
+        due_date_field_name: "结束日期字段"
+        estimated_hours_field_name: "计划小时数字段"
+        done_ratio_field_name: "完成度字段"
+        notes_field_name: "备注字段"
+      transitions/options/field_override:
+        name: "字段名"
+        accessibility: "可访问性"
+        accessibilities:
+          hidden: 隐藏
+          readonly: 只读
+          read_and_write: 可读写

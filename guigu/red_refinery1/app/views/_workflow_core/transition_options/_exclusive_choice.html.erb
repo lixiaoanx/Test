@@ -1,0 +1,28 @@
+<div class="form-group">
+  <%= f.label :default_next_place %>
+  <%= f.collection_select :default_next_place_id,
+                          transition.output_places, :id, :title_for_render,
+                          {include_blank: true},
+                          class: "form-control", class_for_error: "is-invalid"
+  %>
+  <%= f.error_message :default_next_place_id, class: "invalid-feedback" %>
+</div>
+
+<div class="field nested_form_field">
+  <h2 class="label">Conditions</h2>
+
+  <div id="actions" class="collection">
+    <%= f.fields_for :conditions do |ff| %>
+      <%= render "_workflow_core/transition_options/condition", f: ff, tenant: tenant, transition: transition %>
+    <% end %>
+
+    <div class="form-group">
+      <%= link_to_add_association "Add", f, "conditions",
+                                  class: "button is-small",
+                                  partial: "_workflow_core/transition_options/condition",
+                                  render_options: {
+                                    locals: {transition: transition}
+                                  } %>
+    </div>
+  </div>
+</div>

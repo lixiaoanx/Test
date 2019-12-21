@@ -1,0 +1,24 @@
+en:
+  tenants:
+    admin:
+      projects:
+        groups:
+          shared:
+            notice:
+              updated: "组更新成功"
+              created: "组创建成功"
+              deleted: "组删除成功"
+          index:
+            title: "组织结构管理"
+            actions:
+              new: "新建组"
+            table:
+              name: "名称"
+              parent_name: "上一级名称"
+              actions:
+                edit: "编辑"
+                destroy: "删除"
+          new:
+            title: "新建组"
+          edit:
+            title: "编辑组"

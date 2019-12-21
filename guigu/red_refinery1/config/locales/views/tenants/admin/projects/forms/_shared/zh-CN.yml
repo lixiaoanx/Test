@@ -1,0 +1,17 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        forms:
+          shared:
+            title: "表单"
+            tabs:
+              fields: "字段"
+              edit: "编辑"
+              preview: "预览"
+              entries: "数据"
+            notice:
+              updated: "表单更新成功"
+              created: "表单创建成功"
+              destroyed: "表单已被删除"
+              forbidden: "该表单不可编辑"

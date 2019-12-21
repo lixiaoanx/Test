@@ -1,0 +1,26 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        members:
+          shared:
+            notice:
+              updated: "成员更新成功"
+              created: "成员创建成功"
+              deleted: "成员删除成功"
+          form:
+            target: "成员"
+          index:
+            title: "成员管理"
+            actions:
+              new: "新建成员"
+            table:
+              name: "名称"
+              group_names: "所在组"
+              actions:
+                edit: "编辑"
+                destroy: "删除"
+          new:
+            title: "新建成员"
+          edit:
+            title: "编辑成员"

@@ -1,0 +1,38 @@
+<%- content_for :action_bar do %>
+<ol>
+  <% if @instance.processing? && @instance.creator == current_member %>
+  <li class="action_bar-item">
+    <%= link_to "关闭", project_workflow_instance_path(@project, @workflow, @instance), class: "btn text-danger", method: :delete %>
+  </li>
+  <% end %>
+</ol>
+<% end %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "projects/workflows/instances/tab" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>传阅人</th>
+              <th>评论</th>
+              <th>已读？</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @observations.each do |observation| %>
+            <tr>
+              <td><%= observation.observable&.name %></td>
+              <td><%= observation.comment %></td>
+              <td><%= observation.read %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

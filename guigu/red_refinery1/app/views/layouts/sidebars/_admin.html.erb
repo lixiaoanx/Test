@@ -1,0 +1,28 @@
+<div class="sidebar">
+  <h2 class="sidebar-title">
+    <%= t('layouts.header.account_menu.admin') %>
+  </h2>
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <%= nav_item controller: 'admin/home', html_options: {class: "nav-item"} do %>
+      <%= link_to admin_root_path, class: "nav-link" do %>
+      <i class="nav-icon fas fa-tachometer-alt"></i>
+      <%= t("layouts.sidebar.admin.home") %>
+      <% end %>
+      <% end %>
+      <%= nav_item controller: 'admin/users', html_options: {class: "nav-item"} do %>
+      <%= link_to admin_users_path, class: "nav-link" do %>
+      <i class="nav-icon fas fa-user-circle"></i>
+      <%= t("layouts.sidebar.admin.users") %>
+      <% end %>
+      <% end %>
+      <%= nav_item controller: 'admin/tenants', html_options: {class: "nav-item"} do %>
+      <%= link_to admin_tenants_path, class: "nav-link" do %>
+      <i class="nav-icon fas fa-hdd"></i>
+      <%= t("layouts.sidebar.admin.tenants") %>
+      <% end %>
+      <% end %>
+    </ul>
+  </nav>
+  <button class="sidebar-minimizer" type="button"></button>
+</div>

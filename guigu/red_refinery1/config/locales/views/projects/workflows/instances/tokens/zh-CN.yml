@@ -1,0 +1,7 @@
+zh-CN:
+  projects:
+    workflows:
+      instances:
+        tokens:
+          show:
+            title: "审批"

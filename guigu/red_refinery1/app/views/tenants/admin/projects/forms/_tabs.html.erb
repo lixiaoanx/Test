@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= nav_link_to({controller: 'tenants/admin/projects/forms/fields', action: :index}, t("tenants.admin.forms.shared.tabs.fields"), tenant_admin_project_form_fields_path(@tenant, @project, @form), class: "nav-link") %>
+  </li>
+  <% unless @form.attachable_id.present? %>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms', action: :edit}, t("tenants.admin.forms.shared.tabs.edit"), edit_tenant_admin_project_form_path(@tenant, @project, @form), class: "nav-link") %>
+    </li>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms/previews'}, t("tenants.admin.projects.forms.shared.tabs.preview"), tenant_admin_project_form_preview_path(@tenant, @project, @form), class: "nav-link") %>
+    </li>
+    <li class="nav-item">
+      <%= nav_link_to({controller: 'tenants/admin/projects/forms/entries'}, t("tenants.admin.projects.forms.shared.tabs.entries"), tenant_admin_project_form_entries_path(@tenant, @project, @form), class: "nav-link") %>
+    </li>
+  <% end %>
+</ul>

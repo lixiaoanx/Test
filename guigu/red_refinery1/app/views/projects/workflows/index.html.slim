@@ -1,0 +1,68 @@
+- content_for :action_bar
+  ol
+    li.action_bar-item
+      button.btn.text-primary[type="button" data-toggle="modal" data-target="#new_workflow"]
+        i.fas.fa-plus
+        |  发起审批
+    - if current_member.moderator?
+      li.action_bar-item
+        = link_to edit_tenant_admin_project_path(@project.tenant, @project), class: "btn" do
+          i.fas.fa-cog
+
+.row.justify-content-center
+  .col-lg-12
+    .card.tab-content.r-r.r-instances
+      .card-body
+        h3.page-title
+          = link_to project_workflows_path(@project, category_id: params[:category_id], filter: 'all'), class: "btn #{params[:filter].blank? || params[:filter] == 'all' ? 'btn-dark' : 'btn-light'}"
+            | 由我发起
+            span.badge.badge-pill.badge-secondary = @all_instances.count
+          = link_to project_workflows_path(@project, category_id: params[:category_id], filter: 'processing'), class: "btn #{params[:filter] == 'processing' ? 'btn-dark' : 'btn-light'}"
+            | 进行中
+            span.badge.badge-pill.badge-secondary = @processing_instances.count
+          = link_to project_workflows_path(@project, category_id: params[:category_id], filter: 'terminated'), class: "btn #{params[:filter] == 'terminated' ? 'btn-dark' : 'btn-light'}"
+            | 已完成
+            span.badge.badge-pill.badge-secondary = @terminated_instances.count
+          .float-right
+            = link_to "全部", project_workflows_path(@project, filter: params[:filter]), class: "btn btn-light btn-sm #{"active" if params[:category_id].blank?}"
+            - @project.workflow_categories.each do |category|
+              = link_to category.title, project_workflows_path(@project, category_id: category.id, filter: params[:filter]), class: "btn btn-light btn-sm #{"active" if params[:category_id] == category.id.to_s}"
+        = render_instances_table @instances, id: true, hide_category: !!(params[:category_id])
+        = paginate @instances
+
+
+.row.justify-content-center
+  .col-lg-12
+    .card.tab-content.r-r.r-instances
+      .card-body
+        h3.page-title
+          = t('.require_me_review_section.title')
+        = render_instances_table @need_me_review_instances, id: true
+
+.row.justify-content-center
+  .col-lg-12
+    .card.tab-content.r-r.r-instances
+      .card-body
+        h3.page-title
+          = t('.all_viewable_section.title')
+        = render_instances_table @all_viewable_instances, id: true
+        = paginate @all_viewable_instances, param_name: :all_ins_page
+
+#new_workflow.modal.fade[tabindex="-1" role="dialog" aria-labelledby="NewWorkflow" aria-hidden="true" style="display: none;"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        h4.modal-title
+          | 发起流程
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+      .modal-body.text-center
+        .btn-group
+          - @workflows.group_by(&:category).each do |category, workflows|
+            .dropdown
+              button.btn.btn-secondary.btn-lg.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+                = category ? category.title : "未分类"
+              .dropdown-menu[x-placement="bottom-start"]
+                - workflows.each do |workflow|
+                  = link_to workflow.title, new_project_workflow_instance_path(@project, workflow), class: "dropdown-item"

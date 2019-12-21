@@ -1,0 +1,11 @@
+zh-CN:
+  projects:
+    workflows:
+      instances:
+        shared:
+          tab:
+            payload: "表单"
+            tokens: "审批记录"
+            observations: "传阅列表"
+        show:
+          title: "审批"

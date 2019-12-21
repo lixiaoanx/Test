@@ -1,0 +1,16 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        workflows:
+          index:
+            title: "工作流管理"
+            table:
+              id: "Id"
+              form: "关联表单"
+              title: "名称"
+              created_at: "创建于"
+          new:
+            title: "新建工作流"
+          edit:
+            title: "编辑工作流"

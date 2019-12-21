@@ -1,0 +1,9 @@
+<%= form_with(model: field, scope: :field, url: tenant_admin_project_form_field_scripts_path(tenant, project, form, field), method: :patch, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :script %>
+    <%= f.text_field :script, class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :script, class: "invalid-feedback" %>
+  </div>
+
+  <%= f.submit t("shared.form.submit.update"), class: "btn btn-block btn-primary" %>
+<% end %>

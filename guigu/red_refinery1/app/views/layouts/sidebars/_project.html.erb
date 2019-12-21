@@ -1,0 +1,19 @@
+<div class="sidebar">
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <%= nav_item controller: 'projects/home', html_options: {class: "nav-item"} do %>
+        <%= link_to project_path(@project), class: "nav-link" do %>
+          <i class="nav-icon fas fa-user-circle"></i>
+          <%= t("layouts.sidebar.project.home") %>
+        <% end %>
+      <% end %>
+      <%= nav_item namespace: 'projects/workflows', html_options: {class: "nav-item"} do %>
+        <%= link_to project_workflows_path(@project), class: "nav-link" do %>
+          <i class="nav-icon fas fa-user-circle"></i>
+          <%= t("layouts.sidebar.project.workflows") %>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>
+  <button class="sidebar-minimizer" type="button"></button>
+</div>

@@ -1,0 +1,20 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        forms:
+          fields:
+            shared:
+              title: "字段"
+              tabs:
+                edit: "编辑"
+                choices: "选择项"
+                data_source_options: "数据源"
+                options: "字段配置"
+                scripts: "脚本"
+                validations: "验证规则"
+              notice:
+                updated: "字段更新成功"
+                created: "字段创建成功"
+                destroyed: "字段已被删除"
+                forbidden: "该字段不可编辑"

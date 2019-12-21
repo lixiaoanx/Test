@@ -1,0 +1,9 @@
+<%= form_with(model: [tenant, :admin, project, workflow_category], scope: :workflow_category, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :title, class: "invalid-feedback" %>
+  </div>
+
+  <%= f.submit workflow_category.persisted? ? t("shared.form.submit.update") : t("shared.form.submit.create"), class: "btn btn-primary" %>
+<% end %>

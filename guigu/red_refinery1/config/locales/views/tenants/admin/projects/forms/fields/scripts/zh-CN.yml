@@ -1,0 +1,12 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        forms:
+          fields:
+            scripts:
+              shared:
+                notice:
+                  updated: "字段更新成功"
+              edit:
+                title: "编辑脚本"

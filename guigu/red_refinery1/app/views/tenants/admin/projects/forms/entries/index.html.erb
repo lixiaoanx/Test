@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/forms/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <p>
+          <%= link_to "New entry", new_tenant_admin_project_form_entry_path(@tenant, @project, @form), class: "button is-primary" %>
+          <%= link_to "Generate entry", random_tenant_admin_project_form_entries_path(@tenant, @project, @form), method: :post, class: "button is-link" %>
+        </p>
+
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <% @form.fields.each do |field| %>
+                <% next if field.attached_nested_form? %>
+                <th><%= field.label %></th>
+              <% end %>
+              <th>Created at</th>
+              <th>Updated at</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @records.each do |record| %>
+              <tr>
+                <% @form.fields.each do |field| %>
+                  <% next if field.attached_nested_form? %>
+                  <td><%= present(field, target: record).value_for_preview %></td>
+                <% end %>
+                <td><%= time_tag record.created_at %></td>
+                <td><%= time_tag record.updated_at %></td>
+                <td>
+                  <%= link_to "Show", tenant_admin_project_form_entry_path(@tenant, @project, @form, record) %>
+                  <%= link_to "Edit", edit_tenant_admin_project_form_entry_path(@tenant, @project, @form, record) %> |
+                  <%= link_to "Destroy", tenant_admin_project_form_entry_path(@tenant, @project, @form, record), method: :delete, data: {confirm: "Are you sure?"} %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @records %>
+      </div>
+    </div>
+  </div>
+</div>
+

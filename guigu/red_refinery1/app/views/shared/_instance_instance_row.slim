@@ -1,0 +1,28 @@
+- tokens = instance.tokens.includes(:assignable)
+- tokens.uniq(&:instance_id).each do |token|
+  tr
+    - if options[:id]
+      td.align-middle
+        = token.instance.id
+    td.align-middle.t-lg
+      - unless options[:hide_category]
+        span.badge.badge-dark = instance.workflow.category&.title
+        = "  "
+      = instance.workflow.title
+    td.align-middle
+      - badge_color = case instance.status
+      -               when 'processing' then 'info'
+      -               when 'completed' then 'success'
+      -               when 'failed', 'unexpected' then 'danger'
+      -               when 'terminated' then 'dark'
+      span.badge.badge-pill class="badge-#{badge_color}"
+        = WorkflowInstance.human_enum_value(:status, instance.status)
+    /td.align-middle
+              = token.assignable&.name
+    td.align-middle
+      = time_tag instance.created_at
+    td
+      = link_to project_workflow_instance_path(instance.project, instance.workflow, instance), class: "btn btn-link"
+        = t("shared.actions.show")
+        |
+      i.fas.fa-chevron-right

@@ -1,0 +1,22 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        forms:
+          fields:
+            form:
+              tips:
+                name: "该字段的系统标识，仅可由英文小写、下划线、数字组成，且首位不可是数字。"
+            index:
+              title: "字段管理"
+              new_field: "新建字段"
+              table:
+                column: "关联列"
+                type: "类型"
+                title: "名称"
+              actions:
+                nested_form: "子表单"
+            new:
+              title: "新建表单"
+            edit:
+              title: "编辑表单"

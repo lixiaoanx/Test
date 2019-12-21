@@ -1,0 +1,25 @@
+<div class="nested_form">
+  <div class="form-group">
+    <%= f.label :text %>
+    <%= f.text_field :text, autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :text, class: "invalid-feedback" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :value %>
+    <%= f.text_field :value, autofocus: true, required: "required", class: "form-control", class_for_error: "is-invalid" %>
+    <%= f.error_message :value, class: "invalid-feedback" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :place %>
+    <%= f.collection_select :place_id,
+                            transition.output_places, :id, :title_for_render,
+                            {include_blank: true},
+                            class: "form-control", class_for_error: "is-invalid"
+    %>
+    <%= f.error_message :place_id, class: "invalid-feedback" %>
+  </div>
+
+  <%= link_to_remove_association "Remove", f, class: "btn btn-sm btn-danger", wrapper_class: "nested_form" %>
+</div>

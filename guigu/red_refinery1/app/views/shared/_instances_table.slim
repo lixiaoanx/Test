@@ -1,0 +1,23 @@
+- if instances.any?
+  table.table.table-borderless.table-hover
+    thead
+      tr
+        - if options[:id]
+          th = "ID"
+        th = "事务名"
+        th = "当前状态"
+        /th = "当前经办人"
+        th = "发起时间"
+        th
+    tbody
+      - instances.each do |instance|
+        - is_token = instance.is_a? Token
+        - if is_token
+          = render "shared/instance_token_row", token: instance, options: options
+        - elsif instance.is_a? WorkflowInstance
+          = render "shared/instance_instance_row", instance: instance, options: options
+        - elsif instance.is_a? WorkflowInstanceObservation
+          = render "shared/instance_instance_row", instance: instance.instance, options: options
+
+- else
+  .no-data 暂无数据

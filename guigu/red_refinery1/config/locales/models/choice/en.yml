@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      choice: "Choice"
+    attributes:
+      choice:
+        label: "Label"

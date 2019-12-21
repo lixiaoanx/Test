@@ -1,0 +1,14 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        workflows:
+          instances:
+            index:
+              title: "工作流管理"
+              table:
+                workflow_instance_id: "ID"
+                workflow_created_at: "创建时间"
+                workflow_status: "状态"
+                actions:
+                  show: "查看"

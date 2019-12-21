@@ -1,0 +1,19 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        forms:
+          form:
+            tips:
+              name: "该表的系统标识，仅可由英文小写、下划线、数字组成，且首位不可是数字。"
+          index:
+            title: "表单管理"
+            table:
+              id: "Id"
+              name: "标识"
+              title: "名称"
+              created_at: "创建于"
+          new:
+            title: "新建表单"
+          edit:
+            title: "编辑表单"

@@ -1,0 +1,41 @@
+h1.rr-page-title = t("layouts.header.nav.projects")
+.row.justify-content-center
+  .col-lg-12
+    - unless @tenants.any?
+      .alert.alert-warning role="alert"
+        h4.alert-heading 请先绑定您的 Redmine 账户
+        hr
+        p
+          | Red Refinery 平台需要配合您已有的 Redmine 账户进行后续工作，请先点击下方按钮进行绑定。
+        p.mb-0
+          = link_to '绑定 Redmine 账户', account_memberships_path, class: 'btn btn-warning'
+    - else
+      - @tenants.each do |tenant|
+        - is_manageable = @members.find { |member| member.tenant == tenant}&.moderator?
+        .card.tab-content.r-r.r-instances
+          .card-body
+            h3.page-title
+              = tenant.name
+              - if is_manageable
+                .float-right
+                  = link_to tenant_path(tenant) do
+                    i.fas.fa-cog
+            - unless @projects.any?
+              .alert.alert-warning role="alert"
+                | 管理员尚未完成“#{tenant.name}”的配置，或您未被添加进“#{tenant.name}”下任一项目。请等待管理员完成配置后继续。
+            - else
+              .row
+                - @projects.select {|p| p.tenant_id == tenant.id }.each do |project|
+                  = link_to project_path(project), class: "text-decoration-none col-sm-6 col-lg-4 project-card"
+                    .project-info
+                      .project-name = project.name
+                      .row
+                        .col-sm.data-block
+                          .number = project.workflow_instances.processing.where(creator: current_user.members).count
+                          | 我发起的事物
+                        .col-sm.data-block
+                          .number = project.tokens.processing.where(assignable: current_user.members).count
+                          | 待处理的事物
+                        .col-sm.data-block
+                          .number = project.workflow_instances.processing.count
+                          | 全部事务

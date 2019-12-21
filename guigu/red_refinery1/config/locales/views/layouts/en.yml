@@ -1,0 +1,25 @@
+en:
+  layouts:
+    header:
+      brand: "Red Refinery"
+      account_menu:
+        admin: "Administration"
+        profile: "Edit Profile"
+        sign_out: "Sign Out"
+    footer:
+      copyright: "© 2019 Jasl, powered by CybrosCore"
+    sidebar:
+      application:
+        home: "Home"
+      accounts:
+        profile: "Profile"
+        password: "Password"
+        memberships: "Memberships"
+      admin:
+        home: "Home"
+        users: "Users"
+        tenants: "Tenants"
+      tenant:
+        home: "Home"
+        admin: "Managements"
+        admin_projects: "Projects"

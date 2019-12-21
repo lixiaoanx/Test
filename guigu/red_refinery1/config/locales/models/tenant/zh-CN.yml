@@ -1,0 +1,11 @@
+zh-CN:
+  activerecord:
+    models:
+      tenant: "Redmine 实例"
+    attributes:
+      tenant:
+        permalink: "短链接"
+        name: "名称"
+        redmine_host: "Redmine 地址"
+        redmine_secret: "Redmine 通信私钥"
+        redmine_database_url: "Redmine 数据库连接 URL"

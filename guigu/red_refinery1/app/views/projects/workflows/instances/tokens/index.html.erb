@@ -1,0 +1,62 @@
+<%- content_for :action_bar do %>
+<ol>
+  <span>
+    审批状态: <%= WorkflowInstance.human_enum_value(:status, @instance.status) %>
+  </span>
+  <% if @instance.processing? && @instance.creator == current_member %>
+  <li class="action_bar-item">
+    <%= link_to "关闭", project_workflow_instance_path(@project, @workflow, @instance), class: "btn text-danger", method: :delete %>
+  </li>
+  <% end %>
+</ol>
+<% end %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "projects/workflows/instances/tab" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>状态</th>
+              <th>流程步骤</th>
+              <th>经办人</th>
+              <th>实际处理人</th>
+              <th>审批意见</th>
+              <th>操作时间</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          <tfoot>
+            <tr>
+              <th colspan="7">
+
+              </th>
+            </tr>
+          </tfoot>
+          <% @tokens.each do |token| %>
+          <tr>
+            <td><%= token.id %></td>
+            <td><%= WorkflowInstance.human_enum_value(:status, @instance.status) %></td>
+            <td><%= token.place.title %></td>
+            <td><%= token.assignable&.name %></td>
+            <td><%= token.processable&.name || token.assignable.name %></td>
+            <td><%= token.payload&.comment %></td>
+            <td><%= time_tag token.updated_at %></td>
+            <td>
+              <% if token.readable?(current_member) && token.place&.output_transition %>
+              <%= link_to "查看详情", project_workflow_instance_token_path(@project, @workflow, @instance, token) %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/tabs", tenant: @tenant, project: @project %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <p>
+          <%= link_to t(".actions.new"), new_tenant_admin_project_member_path(@tenant, @project), class: "btn btn-primary" %>
+          <%= link_to "从 Redmine 同步成员", sync_tenant_admin_project_members_path(@tenant, @project), method: :post, class: "btn btn-primary" %>
+        </p>
+
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th><%= t(".table.name") %></th>
+              <th><%= t(".table.group_names") %></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @members.each do |member| %>
+              <tr>
+                <td><%= member.name %></td>
+                <td><%= member.groups.map(&:name).join(", ") %></td>
+                <td>
+                  <%= link_to t(".table.actions.edit"), edit_tenant_admin_project_member_path(@tenant, @project, member) %> |
+                  <%= link_to t(".table.actions.destroy"), tenant_admin_project_member_path(@tenant, @project, member), method: :delete, confirm: t("shared.confirmation.destroy") %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @members %>
+      </div>
+    </div>
+  </div>
+</div>

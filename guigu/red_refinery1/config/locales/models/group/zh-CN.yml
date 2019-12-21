@@ -1,0 +1,8 @@
+zh-CN:
+  activerecord:
+    models:
+      group: "组"
+    attributes:
+      group:
+        name: "名称"
+        parent: "隶属于"

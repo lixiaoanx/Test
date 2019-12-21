@@ -1,0 +1,17 @@
+.sidebar.rr
+  h2.sidebar-title = t('layouts.header.account_menu.profile')
+  nav.sidebar-nav
+    ul.nav
+      = nav_item controller: 'accounts/profiles', html_options: {class: "nav-item"} do
+        = link_to account_profile_path, class: "nav-link" do
+          i.nav-icon.fas.fa-user-circle
+          = t("layouts.sidebar.accounts.profile")
+      = nav_item controller: 'accounts/passwords', html_options: {class: "nav-item"} do
+        = link_to account_password_path, class: "nav-link" do
+          i.nav-icon.fas.fa-lock
+          = t("layouts.sidebar.accounts.password")
+      = nav_item controller: 'accounts/memberships', html_options: {class: "nav-item"} do
+        = link_to account_memberships_path, class: "nav-link" do
+          i.nav-icon.fas.fa-lock
+          = t("layouts.sidebar.accounts.memberships")
+  button.sidebar-minimizer type="button"

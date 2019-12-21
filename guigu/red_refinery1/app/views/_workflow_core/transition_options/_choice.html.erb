@@ -1,0 +1,22 @@
+<%= render "_workflow_core/transition_options/field_overridable", f: f, transition: transition, options: options %>
+
+<%= render "_workflow_core/transition_options/votable", f: f, transition: transition, options: options %>
+
+<div class="field nested_form_field">
+  <h2 class="label">Actions</h2>
+
+  <div id="actions" class="collection">
+    <%= f.fields_for :actions do |ff| %>
+      <%= render "_workflow_core/transition_options/action", f: ff, tenant: tenant, transition: transition %>
+    <% end %>
+
+    <div class="form-group">
+      <%= link_to_add_association "Add", f, "actions",
+                                  class: "btn btn-sm btn-primary",
+                                  partial: "_workflow_core/transition_options/action",
+                                  render_options: {
+                                    locals: {transition: transition}
+                                  } %>
+    </div>
+  </div>
+</div>

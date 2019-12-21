@@ -1,0 +1,19 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        workflow_categories:
+          shared:
+            title: "工作流分类管理"
+            notice:
+              updated: "工作流分类更新成功"
+              created: "工作流分类创建成功"
+              destroyed: "工作流分类已被删除"
+          index:
+            title: "工作流分类管理"
+            table:
+              title: "名称"
+          new:
+            title: "新建"
+          edit:
+            title: "编辑"

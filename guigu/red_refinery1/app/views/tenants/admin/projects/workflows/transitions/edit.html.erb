@@ -1,0 +1,11 @@
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <%= render "tenants/admin/projects/workflows/tabs" %>
+
+    <div class="card tab-content">
+      <div class="card-body">
+        <%= render "form", tenant: @tenant, project: @project, workflow: @workflow, transition: @transition %>
+      </div>
+    </div>
+  </div>
+</div>

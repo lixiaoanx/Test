@@ -1,0 +1,18 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        workflows:
+          shared:
+            title: "工作流"
+            tabs:
+              show: "总览"
+              edit: "编辑"
+              transitions: "流程节点配置"
+              load: "从 BPMN 导入流程"
+              instances: "实例"
+            notice:
+              updated: "工作流更新成功"
+              created: "工作流创建成功"
+              destroyed: "工作流已被删除"
+              forbidden: "该工作流不可编辑"

@@ -1,0 +1,32 @@
+zh-CN:
+  tenants:
+    admin:
+      projects:
+        shared:
+          title: "项目"
+          notice:
+            updated: "项目更新成功"
+            created: "项目创建成功"
+            deleted: "项目删除成功"
+          tabs:
+            edit: "编辑"
+            trackers: "监听追踪"
+            groups: "组织结构"
+            members: "成员"
+        index:
+          title: "项目管理"
+          actions:
+            new: "新建项目"
+          table:
+            id: "Id"
+            name: "名称"
+            redmine_project_name: "关联 Redmine 项目"
+            created_at: "创建于"
+            actions:
+              show: "查看"
+              edit: "编辑"
+              destroy: "删除"
+        new:
+          title: "新建项目"
+        edit:
+          title: "编辑项目"
